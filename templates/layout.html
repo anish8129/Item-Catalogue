@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//apis.google.com/js/platform.js?onload=start"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static',filename='functions.js')}}"></script>
+    <script src="{{url_for('static',filename='events.js')}}"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    {% include "header.html"%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-5 col-sm-4">
+            </div>
+            <div class="col-2 col-sm-4" id="flash">
+                <div></div>
+            </div>
+            <div class="col-5 col-sm-4">
+            </div>
+        </div>
+        {% block content%}
+        {% endblock%}
+    </div>
+
+            <!--Create Category -->
+
+
+    <div class="modal fade" id="modalCategoryForm" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Category</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              
+            </div>
+            <div class="modal-body">
+                <form  id="category_form">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Category</label>
+                      <input type="text" class="form-control" id="category_name" name="category"placeholder="Enter Category" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" id="category_id" name="id" placeholder="Password">
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" id="submit"class="btn btn-primary">Update</button>
+            </div>
+          </div>
+          
+        </div>  
+    </div>
+
+                    <!--Item Edit and Create Modals-->
+
+    <div class="modal fade" id="modalItemForm" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Item</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                
+            </div>
+            <div class="modal-body">
+                <form  id="item_form">
+                        <div class="form-group">
+                                <input type="hidden" class="form-control" id="cat_id" name="cat_id" placeholder="Password">
+                            </div>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="item_id" name="item_id" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Item</label>
+                        <input type="text" class="form-control" id="item_name" name="item"placeholder="Enter Item Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control" id="item_price" name="price"placeholder="Enter Price" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="5" id="item_description" name="description" required></textarea>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" id="submit_item"class="btn btn-success">Update-Item</button>
+            </div>
+            </div>
+            
+        </div>  
+    </div>
+
+
+
+                            <!--   __________Delete Confirmation____________________          -->
+<div class="modal fade" id="modalDelete" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>Are you sure you want to delete</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success mr-auto" data-dismiss="modal">Cancel</button>
+                <button type="button" id="delete"class="btn btn-danger ">Delete</button>
+            </div>
+        </div>
+        
+    </div>  
+</div>
+
+                    <!--   __________Access Denied ____________________          -->
+<div class="modal fade" id="modalAccessVerification" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>You are not Logged In</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-success ">Ok</button>
+            </div>
+        </div>
+        
+    </div>  
+</div>
+
+
+                      <!--   __________Authorization Denied ____________________          -->
+<div class="modal fade" id="modalAuthorizationVerification" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4>You are not Authorized to Create Update and Delete</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-danger ">Ok</button>
+            </div>
+        </div>
+        
+    </div>  
+</div>                  
+
+                <!--   __________Login Modal____________________          -->
+
+<div class="modal fade" id="LoginModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <button class="loginBtn loginBtn--facebook">
+                    Login with Facebook
+                  </button>
+                  
+                  <button class="loginBtn loginBtn--google g-signin" id="signinButton" href="#" style="text-transform:none"
+                  data-scope="openid email"
+                  data-clientid="396783047172-ua506a8ljrs574bt15uh66udildevaq6.apps.googleusercontent.com"
+                  data-redirecturi="postmessage"
+                  data-accesstype="offline"
+                  data-cookiepolicy="single_host_origin"
+                  data-callback="signInCallback"
+                  data-approvalprompt="force">
+                    Login with Google
+                  </button>
+            </div>
+        </div>
+        
+    </div>  
+</div>
+
+{%include "footer.html"%}
+<script>
+    sessionStorage.setItem('state','{{STATE}}');
+</script>
+</body>
+</html>
