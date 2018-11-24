@@ -27,9 +27,9 @@ These files configure the virtual machine and install all the tools needed to ru
 1. You should already have vagrant up and be connected to it. 
 2. If you aren't already, cd into the correct project directory: ``` cd /vagrant/Item-Catalogue ```
 3. Run ``` python routes.py ``` 
-4. Open a Web browzer and open http://localhost:5000/
-## Expected Output: 
-   Webpage Should Load.
+4. Open a Web browzer and open http://localhost:5000/ .It will load the web page
+## Expected Output:
+   
 5. Show Categories button Will show the list of Categories If any.
    To create Category You should Login First.
 
