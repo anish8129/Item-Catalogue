@@ -4,6 +4,9 @@ body{
     background-color: #1e7e3396;
 }
 
+#brand_name{
+  text-align:center;
+}
 .cat{
     background-color:#28a745;
     width: 100%;

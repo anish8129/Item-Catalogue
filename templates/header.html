@@ -1,11 +1,11 @@
 <div>
-<nav class="navbar navbar-expand-md bg-success navbar-success " id="header">
+<nav class="navbar navbar-expand-md bg-success navbar-light " id="header">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
      <ul class="navbar-nav mt-2">
-        <li class="nav-item h3 text-light p-1 border rounded">
+        <li id="brand_name" class="nav-item h3 text-light p-1 border rounded">
           Item Catalog
         </li>
       </ul>
@@ -15,7 +15,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto mr-2">
-        <li class="nav-item" id="login-button">
+        <li class="nav-item ml-3" id="login-button">
           <a class="nav-link btn btn-outline-dark btn-sm"  href="#">Login</a>   
         </li>
         <li class="nav-item" id="header-email">
@@ -23,6 +23,6 @@
         </li>
       </ul>
     </div>
-    <a class="navbar-brand  mr-0" href="#"><img  class="border rounded-circle" id="header-picture" width="60px" height="60px" src="{{url_for('static',filename='default.jpg')}}"></a>  
+    <a class="navbar-brand  mr-0 m-auto" href="#"><img  class="border rounded-circle" id="header-picture" width="60px" height="60px" src="{{url_for('static',filename='default.jpg')}}"></a>  
 </nav>
 </div>

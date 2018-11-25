@@ -179,6 +179,7 @@ $(document).ready(function(){
                 $("#item_name").val($(this).siblings(".card-title").text());
                 $("#item_price").val($(this).siblings(".card-price").text());
                 $("#item_description").val($(this).siblings(".card-text").text());
+		$("#modalItemForm .modal-title").text("Update Item");
                 $("#submit_item").html("Update-Item");
                 $("#modalItemForm").modal();
             }
@@ -294,7 +295,7 @@ $(document).ready(function(){
                     sessionStorage.removeItem('picture');
                     $("#header-email").empty();
                     $("#header-picture").attr('src',"../static/default.jpg");
-                    $("#login-button").append("<a class='nav-link' href='#'>Login</a>");
+                    $("#login-button").append("<a class='nav-link btn btn-outline-dark btn-sm' href='#'>Login</a>");
                     list_of_categories();
                     $("#main").empty();
                     $("#flash").addClass("flash").text("Logout Successfully");
